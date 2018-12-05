@@ -6,6 +6,6 @@ namespace orangeMartDev.Data
     {
         public string Name { get; set; }
         public decimal TaxRate { get; set; }
-        public IList<Product> Products { get; set; } // parentId
+        public ICollection<Product> Products { get; set; } // parentId
     }
 }

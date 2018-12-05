@@ -21,9 +21,24 @@ namespace orangeMartDev.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            foreach (var entityType in modelBuilder.Model.GetEntityTypes()
+                .Where(t => t.ClrType.IsSubclassOf(typeof(Entity))))
+            {
+                modelBuilder.Entity(
+                    entityType.Name,
+                    x =>
+                    {
+                        x.Property("CreatedAt")
+                        .HasDefaultValueSql("getutcdate()");
+                        x.Property("CreatedBy")
+                        .HasDefaultValue(Guid.Empty);//system
+                        x.Property("IsDeleted")
+                        .HasDefaultValue(false);
+                    });
+            }
             modelBuilder.Entity<Product>()
-                .Property(p => p.Price)
-                .HasColumnType("decimal(18,2)");
+            .Property(p => p.Price)
+            .HasColumnType("decimal(18,2)");
 
             modelBuilder.Entity<Receipt>()
                 .Property(p => p.PaymentAmount)

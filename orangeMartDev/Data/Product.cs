@@ -8,6 +8,7 @@ namespace orangeMartDev.Data
     {
        // public Guid Id { get; set; }    
         public string Sku { get; set; } //many-to-one with Category
+        public string Name { get; set; }
         public decimal Price { get; set; }
         public string DiscountModifier { get; set; } // 
         public ListingStatus ListingStatus { get; set; }

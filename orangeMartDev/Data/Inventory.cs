@@ -1,8 +1,10 @@
-﻿namespace orangeMartDev.Data
+﻿using System.Collections.Generic;
+
+namespace orangeMartDev.Data
 {
     public class Inventory : Entity
     {
-        public Product Product { get; set; } //many-to-one?
+        public ICollection<Product> Products { get; set; } //one inventory(Lager) has many products
         public int Quantity { get; set; }
         public int CurrentAmount { get; set; }
     }

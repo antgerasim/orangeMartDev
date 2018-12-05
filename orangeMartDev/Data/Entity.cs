@@ -11,8 +11,12 @@ namespace orangeMartDev.Data
         int? _requestedHashCode;
         public Guid Id { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime LastModified { get; set; }
-        public Guid LastModifiedBy { get; set; }
+
+        public DateTime CreatedAt { get; set; }
+        public Guid CreatedBy { get; set; }
+        public bool IsDeleted { get; set; }
+        public Nullable<DateTime> LastModified { get; set; }
+        public Nullable<Guid> LastModifiedBy { get; set; }
 
         public bool IsTransient()
         {

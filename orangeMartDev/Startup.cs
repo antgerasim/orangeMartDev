@@ -32,8 +32,13 @@ namespace orangeMartDev
                 .AllowAnyMethod()
                 .AllowAnyHeader();
             }));
-            
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(@"Data Source=PROGRAMMING\SQLEXPRESS;Initial Catalog=orangeMart;Integrated Security=True", b=> b.UseRowNumberForPaging()));
+
+            //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(@"Data Source=PROGRAMMING\SQLEXPRESS;Initial Catalog=orangeMart;Integrated Security=True", b=> b.UseRowNumberForPaging()));
+            services.AddDbContext<ApplicationDbContext>(options => 
+            //options.UseSqlServer(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=orangeMart;Integrated Security=True", b => b.UseRowNumberForPaging()));
+            options.UseSqlServer(Configuration.GetConnectionString("WorkConnection")));
+
+
             services.AddMvc();
 
             // Register the Swagger generator, defining 1 or more Swagger documents
