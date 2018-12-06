@@ -17,10 +17,21 @@
     <Compile Remove="Migrations\20181204124121_init4.Designer.cs" />
     <Compile Remove="Migrations\20181204124929_init5.cs" />
     <Compile Remove="Migrations\20181204124929_init5.Designer.cs" />
+    <Compile Remove="Migrations\20181205104601_init5.cs" />
+    <Compile Remove="Migrations\20181205104601_init5.Designer.cs" />
+    <Compile Remove="Migrations\20181205122030_init6.cs" />
+    <Compile Remove="Migrations\20181205122030_init6.Designer.cs" />
+    <Compile Remove="Migrations\20181205122530_init6.cs" />
+    <Compile Remove="Migrations\20181205122530_init6.Designer.cs" />
+    <Compile Remove="Migrations\20181205122826_init7.cs" />
+    <Compile Remove="Migrations\20181205122826_init7.Designer.cs" />
+    <Compile Remove="Migrations\20181205124832_init8.cs" />
+    <Compile Remove="Migrations\20181205124832_init8.Designer.cs" />
+    <Compile Remove="Migrations\20181205125826_init9.cs" />
+    <Compile Remove="Migrations\20181205125826_init9.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

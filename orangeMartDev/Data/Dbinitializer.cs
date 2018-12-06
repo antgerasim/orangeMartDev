@@ -15,8 +15,32 @@ namespace orangeMartDev.Data
             {
                 return;
             }
+
+            //var categories = new Category[] {
+            //    new Category{ Name = "Category1", TaxRate = 0.5m, Products = context.Products.Where(p => p.Name == "Product1" && p.Name =="Product2" && p.Name == "Product3").ToList()},
+            //    new Category{ Name = "Category2", TaxRate = 1.5m, Products = context.Products.Where(p => p.Name == "Product4" && p.Name =="Product5" && p.Name == "Product6").ToList()},
+            //    new Category{ Name = "Category3", TaxRate = 2.5m, Products = context.Products.Where(p => p.Name == "Product7" && p.Name =="Product8" && p.Name == "Product9").ToList()}
+            //};
+
+            var categories = new Category[] {
+                new Category{ Name = "Category1", TaxRate = 0.5m,},
+                new Category{ Name = "Category2", TaxRate = 1.5m,},
+                new Category{ Name = "Category3", TaxRate = 2.5m,}
+            };
+
+            foreach (var category in categories)
+            {
+                context.Categories.Add(category);
+            }
+            context.SaveChanges();
+
             var products = new Product[] {
-                new Product{Price = 100, Name = "Product1" },
+                new Product {Price = 100, Name = "Product1", Reviews = new Review[] {
+                    new Review{ Title = "Johns Review", Description = "Johns Review Description"},
+                    new Review{ Title = "Pauls Review", Description = "Pauls Review Description"},
+                    new Review{ Title = "Alexas Review", Description = "Alexas Review  Description"}
+                },Category = context.Categories.SingleOrDefault(category => category.Name == "Category1")
+                },
                 new Product{Price = 200, Name = "Product2" },
                 new Product{Price = 300, Name = "Product3" },
                 new Product{Price = 400, Name = "Product4" },
@@ -33,17 +57,7 @@ namespace orangeMartDev.Data
             }
             context.SaveChanges();
 
-            var categories = new Category[] {
-                new Category{ Name = "Category1", TaxRate = 0.5m, Products = context.Products.Where(p => p.Name == "Product1" && p.Name =="Product2" && p.Name == "Product3").ToList()},
-                new Category{ Name = "Category2", TaxRate = 1.5m, Products = context.Products.Where(p => p.Name == "Product4" && p.Name =="Product5" && p.Name == "Product6").ToList()},
-                new Category{ Name = "Category3", TaxRate = 2.5m, Products = context.Products.Where(p => p.Name == "Product7" && p.Name =="Product8" && p.Name == "Product9").ToList()}
-            };
 
-            foreach (var category in categories)
-            {
-                context.Categories.Add(category);
-            }
-            context.SaveChanges();
 
             var inventory = new Inventory //looks like aggregate root
             {

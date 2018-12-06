@@ -27,6 +27,8 @@ namespace orangeMartDev.Controllers
         [HttpPost]
         public void Post([FromBody]string value)
         {
+            //make sure in postman -> headers tab the content type is application/json
+            //body-tab - raw "text"
         }
 
         // PUT api/values/5
