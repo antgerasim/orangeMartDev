@@ -10,7 +10,7 @@ using orangeMartDev.Data;
 namespace orangeMartDev.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181205144543_init10")]
+    [Migration("20181206101736_init10")]
     partial class init10
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -34,9 +34,11 @@ namespace orangeMartDev
             }));
 
             //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(@"Data Source=PROGRAMMING\SQLEXPRESS;Initial Catalog=orangeMart;Integrated Security=True", b=> b.UseRowNumberForPaging()));
-            services.AddDbContext<ApplicationDbContext>(options => 
+            services.AddDbContext<ApplicationDbContext>(options =>
             //options.UseSqlServer(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=orangeMart;Integrated Security=True", b => b.UseRowNumberForPaging()));
-            options.UseSqlServer(Configuration.GetConnectionString("HomeConnection")));
+            //options.UseSqlServer(Configuration.GetConnectionString("HomeConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("WorkConnection")));
+
 
 
             services.AddMvc();

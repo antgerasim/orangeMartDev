@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +10,9 @@ namespace orangeMartDev.Data
     {
         public static void Initialize(ApplicationDbContext context)
         {
+            string[] tableNames = new string[] { "Products", "Categories", "Inventory", "Receipts", "Reviews", "Users" };
+
+            TruncateAll(context, tableNames);
             context.Database.EnsureCreated();
 
             if (context.Products != null && context.Products.Any())
@@ -68,6 +72,18 @@ namespace orangeMartDev.Data
 
             context.Inventories.Add(inventory);
             context.SaveChanges();
+        }
+
+        private static void TruncateAll(ApplicationDbContext context, string[] tables)
+        {
+            foreach (var table in tables)
+            {
+                //var cmdText =  string.Format("DELETE FROM [{0}] DBCC CHECKIDENT ([{0}], RESEED, [0|1])", table);
+                var cmdText = string.Format("ALTER TABLE {0} NOCHECK Constraint All DELETE TABLE Products", table);
+
+                context.Database.ExecuteSqlCommand(cmdText);
+            }
+           
         }
     }
 }
